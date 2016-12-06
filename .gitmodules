@@ -1,0 +1,8 @@
+[submodule "v8"]
+	path = v8
+	url = https://github.com/eunchong/v8
+	branch = JSMTrace
+[submodule "llvm"]
+	path = llvm
+	url = https://github.com/eunchong/llvm
+	branch = JSMTrace
