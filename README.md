@@ -14,7 +14,13 @@ On the other hands, the unique ID view has a similar information, but in differe
 
 For implementation, we firstly used shadow memory technique from LLVM AddressSanitizer. It was a significant technique for linear performance. Then, by referring to SourcePositionTable and RuntimeTrace in V8 engine, we attempted to track the Javascript code line which we need to know.
 
+![Preview](https://cloud.githubusercontent.com/assets/2150106/21038223/3e775596-be17-11e6-89c4-b9cdce2a4a69.png)
+
 For the benchmarking performance of JSMTrace, we used google's Octane benchmark tool. The result performance were calculated as 3.1x, 1.2x in each enable log output, disable log output mode.
+
+![Preview](https://cloud.githubusercontent.com/assets/2150106/21038330/13441886-be18-11e6-9040-745326929690.jpeg)
+![Preview](https://cloud.githubusercontent.com/assets/2150106/21038329/1343ea6e-be18-11e6-9b08-a6dc7ffedd92.jpeg)
+
 
 ## Work left to do
 
