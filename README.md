@@ -4,7 +4,9 @@ JSMTrace is a new tool for Javascript memory tracing which helps users to analyz
 
 Unique ID is a concept which we used for tracking memory group. In JSMTrace, allocated memory areas have unique IDs respectively. These IDs are quickly obtained by exploiting shadow memory structure. Whenever the memory allocation occurs, a unique ID is assigned to a memory group respectively.
 
-In source code view, JSMTrace grasps the information which code line tries to access to memory from Javascript code. Then, it shows which code lines accesses to each memory with some information such as access type, unique IDs, address, etc. On the other hands, the unique ID view has a similar information, but in different point of view. In this mode, JSMTrace shows memory accessing information based on memory group, sorting by unique ID.
+In source code view, JSMTrace grasps the information which code line tries to access to memory from Javascript code. Then, it shows which code lines accesses to each memory with some information such as access type, unique IDs, address, etc. 
+
+On the other hands, the unique ID view has a similar information, but in different point of view. In this mode, JSMTrace shows memory accessing information based on memory group, sorting by unique ID.
 
 For implementation, we firstly used shadow memory technique from LLVM AddressSanitizer. It was a significant technique for linear performance. Then, by referring to SourcePositionTable and RuntimeTrace in V8 engine, we attempted to track the Javascript code line which we need to know.
 
