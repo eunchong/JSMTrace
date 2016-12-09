@@ -6,7 +6,11 @@ Unique ID is a concept which we used for tracking memory group. In JSMTrace, all
 
 In source code view, JSMTrace grasps the information which code line tries to access to memory from Javascript code. Then, it shows which code lines accesses to each memory with some information such as access type, unique IDs, address, etc. 
 
+![Preview](https://cloud.githubusercontent.com/assets/2150106/21038134/8974142c-be16-11e6-97bd-6be909a3a1d8.png)
+
 On the other hands, the unique ID view has a similar information, but in different point of view. In this mode, JSMTrace shows memory accessing information based on memory group, sorting by unique ID.
+
+![Preview](https://cloud.githubusercontent.com/assets/2150106/21038127/7d94ee2e-be16-11e6-8540-5a02c6f2ba87.png)
 
 For implementation, we firstly used shadow memory technique from LLVM AddressSanitizer. It was a significant technique for linear performance. Then, by referring to SourcePositionTable and RuntimeTrace in V8 engine, we attempted to track the Javascript code line which we need to know.
 
