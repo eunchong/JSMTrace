@@ -10,7 +10,7 @@ from collections import defaultdict
 
 def main(argv):
 	db = JSMT_DB()
-	result = db.get_group_by_mid(argv[0])
+	result = db.get_mid_group(argv[0])
 
 	res = defaultdict(list)
 	tableTitle = [["Type","Address","Size","mId","stack size","stack address","JS Code","JS Line No"]]

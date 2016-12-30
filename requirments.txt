@@ -1,2 +1,5 @@
 config
 sqlalchemy
+Flask
+Flask_SocketIO
+psycopg2

@@ -1,0 +1,105 @@
+{% extends "base_layout.html" %} {% block title %}Sample{% endblock %} 
+{% block content %}
+<script type="text/javascript" src="//code.jquery.com/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/socket.io/1.3.5/socket.io.min.js"></script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/ace/1.2.6/ace.js
+"></script>
+
+<style type="text/css" media="screen">
+   body {
+       overflow: hidden;
+   }
+   body {
+       overflow: hidden;
+       height: 100%;
+   }
+
+   html {
+       height: 100%;
+   }
+
+   .container-fluid {
+       /*height: 100%;*/
+
+       /*display:table;*/
+       width: 100%;
+       margin-top: -50px;
+       padding: 50px 0 0 0; 
+       /*set left/right padding according to needs
+       box-sizing: border-box;*/
+   }
+   #editor {
+        margin: 0;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+   }
+   .m_alloc_color{
+     position:absolute;
+     background:rgba(0,255,0,0.3);
+     z-index:20
+   }
+   .m_free_color{
+     position:absolute;
+     background:rgba(255,0,0,0.3);
+     z-index:40
+   }
+   .m_access_color{
+     position:absolute;
+     background:rgba(255,255,0,0.3);
+     z-index:40
+   }
+
+ </style>
+
+<div class="container-fluid f_hg">
+    <div class="row f_hg">
+        <div class="col-lg-12 f_hg">
+            <h1 class="page-header">Blank</h1>
+            <pre id="editor" class="">{{logJs}}</pre>
+
+
+        </div>
+    </div>
+</div>
+<script>
+    var editor = ace.edit("editor");
+    var Range = ace.require('ace/range').Range;
+    editor.setTheme("ace/theme/github");
+    editor.session.setMode("ace/mode/javascript");
+    editor.setReadOnly(true);
+    editor.setHighlightActiveLine(false);
+
+    var logBindTable = {{logBindTable|safe}};
+    var lineBindTable = {{lineBindTable|safe}};
+
+    editor.session.selection.on("changeCursor" , function(e){
+        var cursor = editor.selection.getCursor();
+        var r = cursor.row;
+        // r+1
+
+        for (var markerId in editor.session.$backMarkers) {
+            editor.session.removeMarker(markerId);
+        }
+
+        if((r) in lineBindTable) {
+            console.log(r)
+            mId = lineBindTable[r]
+            // console.log(lineNo);
+            for(var mIdx in logBindTable[mId]) {
+                mInfo = logBindTable[mId][mIdx]
+                var color = "ace_active-line"; 
+                if(mInfo[1][0]=='alloc') color = "m_alloc_color";
+                else if(mInfo[1][0]=='load') color = "m_access_color";
+                else if(mInfo[1][0]=='store') color = "m_access_color";
+                else if(mInfo[1][0]=='free') color = "m_free_color";
+                editor.session.addMarker(new Range(mInfo[0], 0, 0, 0), color, "line");    
+            }        
+        }
+    });
+
+
+</script>
+{% endblock %}
