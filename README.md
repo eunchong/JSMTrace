@@ -33,9 +33,10 @@ For the benchmarking performance of JSMTrace, we used google's Octane benchmark 
 - [X] Apply git submodule llvm and v8
 - [X] Develop JSMTrace prototype for memory trace and visualize
 - [X] Improve JSMTrace prototype from logfile based process to using Database
+- [X] Develop Web UI, For interaction with JMSTrace. 
 - [ ] Make options of JSMTrace trace and analyze
 - [ ] Divide the JSMTrace LLVM from ASan Module
-- [ ] Develop Web UI, For interaction with JMSTrace. 
+
 
 ## License
 JSMTrace is released under the [MIT License](http://www.opensource.org/licenses/MIT).
